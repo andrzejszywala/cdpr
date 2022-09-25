@@ -75,7 +75,7 @@ Logs from application should by stored in centralized log management such a gray
 
 4. In folder gshop-games run `mvnw quarkus:dev` it will start cart microservice on port 10001
 
-5. In folder gshop-ui run `mvnw quarkus:dev` it will start cart microservice on port 10000 - you have to wait some time because for the first time node must download half of the internet ;)
+5. In folder gshop-ui run `mvnw quarkus:dev` it will start cart microservice on port 10000 - you have to wait some time because for the first time node must download half of the internet ;) When you see quarkus logo it is started.
 
 6. In browser open url http://localhost:10000/index.html there is simple angular application. It presents all games and current cart state for user "andrzej" name of the user is hardcoded in generated jwt token. Clicking on add button causes adding game to cart.
 
