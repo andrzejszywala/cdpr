@@ -1,0 +1,38 @@
+Games
+
+<table border="1">
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Publisher</th>
+		<th>Quantity</th>
+		<th>Price</th>
+		<th>add to cart</th>
+	</tr>
+
+	<tbody>
+		<tr *ngFor="let game of games">
+			<td>{{game.id}}</td>
+			<td>{{game.name}}</td>
+			<td>{{game.publisher}}</td>
+			<td>{{game.quantity}}</td>
+			<td>{{game.price}}</td>
+			<td><button type="button" (click)="onAddToCart(game.id)">add</button></td>
+		</tr>
+	</tbody>
+</table>
+
+Cart:
+<table border="1">
+	<tr>
+		<th>Game</th>
+		<th>Quantity</th>
+	</tr>
+
+	<tbody>
+		<tr *ngFor="let item of cartItems">
+			<td>{{item.gameName}}</td>
+			<td>{{item.quantity}}</td>
+		</tr>
+	</tbody>
+</table>

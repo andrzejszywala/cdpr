@@ -1,0 +1,59 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+	<changeSet author="as" id="create game">
+		<createTable tableName="GAME">
+			<column name="id" type="INTEGER" autoIncrement="true">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="name" type="VARCHAR(200)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="publisher" type="VARCHAR(200)"></column>
+			<column name="publish_date" type="DATE"></column>		
+			<column name="quantity" type="INTEGER">
+				<constraints nullable="false"/>
+			</column>
+			<column name="price" type="DECIMAL">
+				<constraints nullable="false"/>
+			</column>	
+		</createTable>
+	</changeSet>
+	
+	<!-- insert initial data if table is empty -->
+	<changeSet id="insert game data" author="as">
+		<preConditions onFail="CONTINUE">
+			<tableIsEmpty tableName="GAME"/>
+		</preConditions>
+		<insert tableName="GAME">
+			<column name="name" value="Cyberpunk 2077"></column>
+			<column name="publisher" value="CD PROJEKT RED"></column>
+			<column name="quantity" valueNumeric="100"></column>
+			<column name="price" valueNumeric="200"></column>
+		</insert>
+		<insert tableName="GAME">
+			<column name="name" value="Wiedźmin 1"></column>
+			<column name="publisher" value="CD PROJEKT RED"></column>
+			<column name="quantity" valueNumeric="20"></column>
+			<column name="price" valueNumeric="10"></column>
+		</insert>
+		<insert tableName="GAME">
+			<column name="name" value="Wiedźmin 2"></column>
+			<column name="publisher" value="CD PROJEKT RED"></column>
+			<column name="quantity" valueNumeric="66"></column>
+			<column name="price" valueNumeric="20"></column>
+		</insert>
+		<insert tableName="GAME">
+			<column name="name" value="Wiedźmin 3"></column>
+			<column name="publisher" value="CD PROJEKT RED"></column>
+			<column name="quantity" valueNumeric="448"></column>
+			<column name="price" valueNumeric="200"></column>
+		</insert>
+		
+	</changeSet>
+	
+</databaseChangeLog>

@@ -1,0 +1,49 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+	<changeSet author="as" id="create cart">
+		<createTable tableName="CART">
+			<column name="ID" type="VARCHAR(200)">
+				<constraints primaryKey="true" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="as" id="create cart item">
+		<createTable tableName="CART_ITEM">
+			<column name="ID" type="INTEGER" autoIncrement="true">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="CART_ID" type="VARCHAR(200)">
+				<constraints foreignKeyName="CART_ITEM_CART_FK" referencedColumnNames="ID" referencedTableName="CART"/>
+			</column>
+			<column name="GAME_ID" type="INTEGER"></column>
+			<column name="QUANTITY" type="INTEGER"></column>
+		</createTable>
+	</changeSet>
+
+	<!-- insert initial data if table is empty -->
+	<changeSet id="example carts" author="as">
+		<preConditions onFail="CONTINUE">
+			<tableIsEmpty tableName="CART" />
+		</preConditions>
+		<insert tableName="CART">
+			<column name="ID" value="andrzej"></column>
+		</insert>
+		<insert tableName="CART_ITEM">
+			<column name="CART_ID" value="andrzej"></column>
+			<column name="GAME_ID" valueNumeric="1"></column>
+			<column name="QUANTITY" valueNumeric="1"></column>
+		</insert>
+		<insert tableName="CART_ITEM">
+			<column name="CART_ID" value="andrzej"></column>
+			<column name="GAME_ID" valueNumeric="2"></column>
+			<column name="QUANTITY" valueNumeric="3"></column>
+		</insert>
+	</changeSet>
+
+</databaseChangeLog>
